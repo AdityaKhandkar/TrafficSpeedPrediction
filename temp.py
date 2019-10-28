@@ -60,14 +60,14 @@ print("before starting")
 
 for time in df['time_of_day'].unique():
     for id in df['route_id'].unique():
-    grouped = df.groupby(['time_of_day']).get_group(time).groupby(['route_id']).get_group(id)
-    # print(grouped)
-    n = len(grouped['time_of_day'])
-    mean = grouped['target_speed'].mean()
-    for idx in grouped.index.values:
-        avg_speed = (mean*n - df.loc[idx, 'target_speed'])/(n-1)
-        # print("%d, %d" % (idx, avg_speed))
-        grouped.loc[idx, 'avg_speed'] = avg_speed
+        grouped = df.groupby(['time_of_day']).get_group(time).groupby(['route_id']).get_group(id)
+        # print(grouped)
+        n = len(grouped['time_of_day'])
+        mean = grouped['target_speed'].mean()
+        for idx in grouped.index.values:
+            avg_speed = (mean*n - df.loc[idx, 'target_speed'])/(n-1)
+            # print("%d, %d" % (idx, avg_speed))
+            df.loc[idx, 'avg_speed'] = avg_speed
 
 # print(grouped)
 
