@@ -21,6 +21,7 @@ df = pd.read_csv(custom_data_aug)
 
 df = df.drop('Unnamed: 0', axis=1)
 
+print(len(df))
 
 # ## Maybe add another column week_of_month or day_of_month
 # df = pd.DataFrame(columns=['target_speed', 'speed_10_mins_ago', 'speed_20_mins_ago',
